@@ -1,0 +1,151 @@
+body {
+  margin: 0;
+  scrollbar-width: none;
+}
+
+.navbar a {
+  color: white !important;
+  margin-left: 30px;
+}
+.navbar-nav {
+  margin-left: 350px;
+}
+.card {
+  margin-left: 100px;
+  margin-bottom: 50px;
+}
+.card:hover {
+  transform: scale(1.1);
+}
+.card img {
+  width: 80%;
+}
+.image img {
+  width: 100%;
+  margin-top: 30px;
+}
+.electro {
+  margin: 10px;
+}
+.text {
+  text-align: center;
+  padding-top: 30px;
+  margin-bottom: 20px;
+}
+.electro .card-body img {
+  margin-left: 25px;
+}
+.card-header a {
+  color: black;
+  text-decoration: none;
+  font-weight: 600;
+}
+/* Search */
+.search {
+  margin-left: 500px;
+  margin-top: 20px;
+  margin-bottom: 20px;
+}
+.search input {
+  width: 250px;
+}
+.search span {
+}
+.search #recherche {
+  background-color: black;
+  color: white;
+}
+.resultat {
+  text-align: center;
+  margin-bottom: 50px;
+}
+.imageproduct img {
+  height: 200px;
+  width: 120px;
+}
+.resultat_search {
+  margin: 50px;
+}
+
+.product_result li {
+  list-style-type: none;
+  font-size: 10px;
+}
+.product {
+  margin-left: 20px;
+}
+.product a {
+  text-decoration: none;
+  font-size: 15px;
+  color: black;
+  font-weight: 500;
+}
+/* about */
+.about {
+  display: flex;
+  margin: 50px;
+}
+.description {
+  width: 60%;
+}
+
+.about-image {
+  width: 70%;
+  margin-top: 70px;
+}
+.about-image img {
+  width: 90%;
+}
+/* footer */
+.footer {
+  background-color: black;
+  height: 250px;
+  color: white;
+  padding: 20px;
+  display: flex;
+}
+.footer h5 {
+  margin: 12px;
+}
+.footer .reseaux {
+  display: flex;
+  list-style-type: none;
+}
+.footer li {
+  list-style-type: none;
+}
+.footer .reseaux li {
+  margin-left: 20px;
+}
+/* contact */
+.contact {
+  position: relative;
+}
+.footer_contact {
+  position: fixed;
+  bottom: 0px;
+  width: 100%;
+}
+.contact-text {
+  margin-top: 30px;
+  text-align: center;
+}
+/* description */
+.description {
+  display: flex;
+  margin: 90px;
+}
+.prix {
+  color: magenta;
+}
+.productdesc {
+  font-size: 20px;
+  list-style-type: none;
+  margin-top: 30px;
+}
+.productdesc li {
+  margin-bottom: 20px;
+}
+span {
+  font-weight: 500;
+}

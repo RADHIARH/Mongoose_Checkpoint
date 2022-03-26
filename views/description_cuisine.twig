@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <link rel='stylesheet' href='/stylesheets/style.css' />
+  </head>
+  <body>
+  {% include 'navbar.twig' %} 
+  <div class="description">
+      <div class="col-md-3  offset-md-2 "> 
+      <img src="{{produit.url}}"/>
+      </div>
+      <div class="col-md-6 p-4 shadow offset-md-5">
+      <h3 class=>{{produit.nom}}</h3>
+      <h3 class="prix mt-3">{{produit.prix}} TND</h3>
+      <ul class="productdesc">
+      {% if produit.Capacite %}<li> Capacité: <span>{{produit.Capacite}}W</span></li>{% endif %}
+       {% if produit.Diametre %}  <li>Diametre: <span>{{produit.Diametre}} bar</span></li>{% endif %}
+      {% if produit.Materiau %} <li>Matériau: <span>{{produit.Materiau}} L</span></li>{% endif %}
+      {% if produit.Revetement %} <li>Revetement: <span>{{produit.Revetement}} L</span></li>{% endif %}
+      {% if produit.Volume_inferieur %} <li>Volume inferieur: <span>{{produit.Volume_inferieur}} L</span></li>{% endif %}
+      {% if produit.Volume_theiere %} <li>Volume de la theiere: <span>{{produit.Volume_theiere}} L</span></li>{% endif %}
+      <li> Points forts :<span>{{produit.Points_forts}}</span></li>
+     
+      </ul>
+      </div>
+  </div>
+  {% include 'footer.twig' %} 
+     
+  </body>
+</html>

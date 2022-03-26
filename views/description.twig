@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>{{ title }}</title>
+    <link rel='stylesheet' href='/stylesheets/style.css' />
+  </head>
+  <body>
+  {% include 'navbar.twig' %} 
+  <div class="description">
+      <div class="col-md-3  offset-md-2 "> 
+      <img src="{{prod.url}}"/>
+      </div>
+      <div class="col-md-6 p-4 shadow offset-md-5">
+      <h3 class=>{{prod.nom}}</h3>
+      <h3 class="prix">{{prod.prix}} TND</h3>
+      <ul class="productdesc">
+      <li> Puissance: <span>{{prod.Puissance}}W</span></li>
+      <li>Pression: <span>{{prod.Pression}} bar</span></li>
+      <li>Capacité du réservoir: <span>{{prod.Capacite}} L</span></li>
+      <li> Points forts: <span>{{prod.Points_forts}}</span></li>
+      <li>Garantie: <span>{{prod.Garantie}}</span></li>
+      </ul>
+      </div>
+  </div>
+  {% include 'footer.twig' %} 
+     
+  </body>
+</html>

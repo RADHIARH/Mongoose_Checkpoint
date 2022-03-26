@@ -1,0 +1,71 @@
+{
+    "items":[
+        {
+          "id":1,
+          "nom":"Machine à Café Nespresso Magimix Inissia - Noir",
+          "url":"https://tdiscount.tn/modules/tdiselectro/scripts/webp-img/ELE3.png.webp",
+          "prix":399.00,
+          "Puissance" : 1260,
+          "Pression" : 19,
+          "Capacite" : 0.7 ,
+          "Points_forts": "Détartrage automatique | Longueurs de tasses multiples |Mise en veille (économiseur d'énergie) | Nettoyage facile | Repose tasse ajustable",
+            "Garantie" : "1 an"
+        },
+         {  "id":2,
+           "nom":"Mini Four électrique Simfer 45 L avec afficheur - Noir",
+          "url":"https://tdiscount.tn/modules/tdiselectro/scripts/webp-img/ELE4.png.webp",
+          "prix":279.00,
+          "Puissance" : 1400,
+          "Pression" : 19,
+          "Capacite" : 0.7 ,
+          "Points_forts":"Horloge numérique programmable Bouton pop-up dissimulable Fonction Yaourt - Defrost Nettoyage Vapeur - Cavite Emaillee Chaleur Tournante - 1 x Grille - 1 x plateau Rond - 1 x plateau Rectangulaire ",
+            "Garantie" : "1 an"
+        },
+         { "id":3,
+          "nom":"Cafetière Korkmaz Smart 4 tasses - Inox",
+          "url":"https://tdiscount.tn/modules/tdiselectro/scripts/webp-img/ELE2.png.webp",
+          "prix":84.00,
+          "Puissance" : 400,
+          "Pression" : 18,
+          "Capacite" :4 ,
+          "Points_forts":"Fonction rotative à 360 ° C | Système de sécurité qui empêche le fonctionnement sans eau | Poignée ergonomique | Corps élégant en inox ",
+            "Garantie" : "1 an"
+        },
+         {
+            "id":4,
+            "nom":"Grille Viande Korkmaz 1800 W - Rose Gold",
+          "url":"https://tdiscount.tn/modules/tdiselectro/scripts/webp-img/ELE1.png.webp",
+          
+          "prix":189.00,
+          "Puissance" : 1800,
+          "Pression" : 18,
+          "Capacite" :4 ,
+          "Points_forts":"Grilles 100% aluminium moulé | Cuisson et de friture polyvalentes ",
+            "Garantie" : "1 an"
+        },
+        {
+           "id":5,
+           "nom":"Machine à laver automatique Whirlpool 8 Kg 1200tr/mn - Blanc",
+           "prix":1979.00,
+          "url":"https://tdiscount.tn/modules/tdiselectro/scripts/webp-img/ELE5.png.webp",
+           "Pression" : 18,
+          "Capacite" :8 ,
+          "Points_forts":"Technologie 6ème Sens | FreshCare+ | Front loader | Thermostat réglable | Afficheur texte LCD ",
+            "Garantie" : "1 an"
+        },
+        {
+          "id":6,
+          "nom":"Réfrigérateur No Frost Combiné Whirlpool 338L 6ème Sens - Inox",
+            "url":"https://tdiscount.tn/modules/tdiselectro/scripts/webp-img/ELE6.png.webp",
+          "prix":2259.00,
+           "Pression" : 20,
+          "Capacite" :"388 Litres" ,
+          "Points_forts":"6ème Sens Control | Alarme température | Réfrigération rapide | Plateau à accès direct | Clever out",
+            "Garantie" : "1 an"
+        }
+       
+
+
+    ]
+   
+}

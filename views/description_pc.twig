@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <link rel='stylesheet' href='/stylesheets/style.css' />
+  </head>
+  <body>
+  {% include 'navbar.twig' %} 
+  <div class="description">
+      <div class="col-md-3  offset-md-2 "> 
+      <img src="{{pc.url}}"/>
+      </div>
+      <div class="col-md-6 p-4 shadow offset-md-5">
+      <h3 class=>{{pc.nom}}</h3>
+      <h3 class="prix mt-3">{{pc.prix}} TND</h3>
+      <ul class="productdesc">
+     <li> Processeur: <span>{{pc.Processeur}}W</span></li>
+     <li>Frequence processeur: <span>{{pc.Frequence_processeur}} bar</span></li>
+      <li>Disque dur: <span>{{pc.Disque_dur}} </span></li>
+       <li>RAM: <span>{{pc.RAM}} </span></li>
+       <li>Systeme d'exploitation: <span>{{pc.Systeme_exploitation}} </span></li>
+      <li>Carte_graphique: <span>{{pc.Carte_graphique}} </span></li>
+      <li>Taille de l'ecran: <span>{{pc.Taille_ecran}} </span></li>
+     <li>Carte_graphique: <span>{{pc.Carte_graphique}} </span></li>
+    <li>Connecteurs: <span>{{pc.Connecteurs}} </span></li>
+   <li> <span>{{pc.perepheriques}} </span>
+  <li>Garantie:  <span>{{pc.Garantie}} </span></li>
+  {% if pc.Points_forts %} <li> Points forts :<span>{{produit.Points_forts}}</span></li>{% endif %}
+     
+      </ul>
+      </div>
+  </div>
+  {% include 'footer.twig' %} 
+     
+  </body>
+</html>
