@@ -5,24 +5,67 @@
     <link rel='stylesheet' href='/stylesheets/style.css' />
   </head>
   <body>
-  {% include 'navbar.twig' %} 
-  <div class="description">
+    {% include 'navbar.twig' with {'lastname':user.Lastname,'firstname':user.Firstname} %} 
+    <div class="description">
       <div class="col-md-3  offset-md-2 "> 
-      <img src="{{prod.url}}"/>
+        <img src="{{prod.url}}"/>
       </div>
       <div class="col-md-6 p-4 shadow offset-md-5">
-      <h3 class=>{{prod.nom}}</h3>
-      <h3 class="prix">{{prod.prix}} TND</h3>
-      <ul class="productdesc">
-      <li> Puissance: <span>{{prod.Puissance}}W</span></li>
-      <li>Pression: <span>{{prod.Pression}} bar</span></li>
-      <li>Capacité du réservoir: <span>{{prod.Capacite}} L</span></li>
-      <li> Points forts: <span>{{prod.Points_forts}}</span></li>
-      <li>Garantie: <span>{{prod.Garantie}}</span></li>
-      </ul>
-      </div>
-  </div>
-  {% include 'footer.twig' %} 
-     
+        <h3 class=>{{prod.nom}}</h3>
+        <h3 class="prix">{{prod.prix}} TND</h3>
+        <form method="POST" action="/update_electro/{{prod.id}}">
+          <div class="d-flex m-2"> 
+            <label class="form-label m-1 fs-5" for="" style="width:380px">Puissance (en watt):</label>
+            <input type="text" name="puissance"  disabled  id="ps" class="form-control fs-5 fw-bolder"  style="border:none;background-color:white"  value={{prod.puissance}}><br>
+          </div>
+          <div class="d-flex m-2 "> 
+            <label class="form-label m-1 fs-5"   style="width:380px"  for="">Pression (en bar):</label>
+            <input type="text" name="pression"  disabled  id="pr" class="form-control fs-5 fw-bolder" value={{prod.pression}} id="" style="border: none;background-color:white;
+                   "><br>
+          </div>
+          <div class="d-flex m-2 "> 
+            <label class="form-label m-1 fs-5"  style="width:380px"  for="">Capacité du réservoir(en litres):</label>
+            <input type="text" name="capacite"  disabled  id="cp" class="form-control fs-5 fw-bolder" value={{prod.capacite}} id="" style="border: none;background-color:white;
+                   "><br>
+          </div>
+          <div class="d-flex m-2 "> 
+            <label class="form-label m-1 fs-5"   style="width:380px" for="">Garantie(en années):</label>
+            <input type="text" name="garantie"  disabled  id="gr" class="form-control fs-5 fw-bolder" value={{prod.garantie}} id="" style="border: none;background-color:white;
+                   "><br>
+          </div>
+          <div class="d-flex m-2"> 
+            <label  class="form-label m-1 fs-5 "  style="width:380px"for="">Points forts:</label>
+            <textarea id="pf" name="pointsf"  disabled class="form-control fs-f fw-bolder"  style="border:none;background-color:white"
+               rows="7" cols="40">{{prod.points_forts}}</textarea>
+                 <br>
+          </div>
+          <div class="d-flex m-2"> 
+            <a class="btn btn-danger m-1" href="/delete_electro/{{prod.id}}" >Supprimer </a>
+            <a class="btn btn-outline-dark m-1"  id="edit">Modifier </a>
+            <input type="submit" class="btn btn-success mt-1"  id="up" value="Mettre à jour" style="visibility:hidden;height:38px">
+          </div>
+        </form> 
+      </div> 
+    </div>
+    {% include 'footer.twig' %}   
+      {% block javascripts %}
+        <script type="text/javascript">
+          const edit = document.getElementById('edit')
+          const pr = document.getElementById('pr');
+          const ps = document.getElementById('ps');
+          const cp= document.getElementById('cp');
+          const gr = document.getElementById('gr');
+          const pf = document.getElementById('pf');
+          const update=document.getElementById('up');
+          edit.onclick = () => {
+            pr.disabled = false
+            ps.disabled = false
+            gr.disabled = false
+            cp.disabled = false
+            pf.disabled = false
+            document.getElementById('up').style.visibility="visible";
+        }
+        </script>
+      {% endblock %}
   </body>
 </html>

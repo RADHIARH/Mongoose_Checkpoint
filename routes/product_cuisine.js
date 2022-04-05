@@ -1,6 +1,5 @@
 const express = require("express");
 const router = express.Router();
-const clothescontr = require("../controllers/Controller");
-router.get("/:idprod", clothescontr.getprodcuisine);
-
+const controller = require("../controllers/Controller");
+router.get("/:id", controller.getprodcuisine);
 module.exports = router;

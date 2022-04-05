@@ -8,7 +8,7 @@ body {
   margin-left: 30px;
 }
 .navbar-nav {
-  margin-left: 350px;
+  margin-left: 300px;
 }
 .card {
   margin-left: 100px;
@@ -64,7 +64,7 @@ body {
   width: 120px;
 }
 .resultat_search {
-  margin: 50px;
+  margin-left: 70px;
 }
 
 .product_result li {
@@ -121,6 +121,10 @@ body {
 .contact {
   position: relative;
 }
+.contactform{
+  margin-top: 30px;
+
+}
 .footer_contact {
   position: fixed;
   bottom: 0px;
@@ -131,6 +135,14 @@ body {
   text-align: center;
 }
 /* description */
+.product {
+position:relative
+
+}
+.product i{
+  position: absolute;
+  right:0px
+}
 .description {
   display: flex;
   margin: 90px;
@@ -148,4 +160,22 @@ body {
 }
 span {
   font-weight: 500;
+}
+.form-control {
+  border: none;
+}
+
+/* login */
+.login{
+  margin:100px  400px 200px 400px;
+  border:1px solid black ;
+  height:250px;
+  padding:40px
+}
+.login h4{
+  color:black;
+  margin-left:230px
+}
+.card{
+  border:none
 }

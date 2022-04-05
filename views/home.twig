@@ -12,11 +12,12 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
 </head>
 <body>
-    {% include 'navbar.twig' %} 
+    {% include 'navbar.twig' with {'lastname':user.Lastname,'firstname':user.Firstname} %} 
+    <h5 class="text-center m-4 "> </h5></span>
     <nav class="navbar search navbar-light bg-white">
       <div class="container-fluid ">
         <form method="GET" action="/search" class="d-flex">
-            <input type="text" class="form-control me-2" name="username" />
+            <input type="text" class="form-control me-2" name="data" />
             <input type="submit" value="Rechercher"  class="btn btn-outline-success" id="recherche" />
         </form>
       </div>
@@ -42,46 +43,45 @@
         <span class="visually-hidden">Next</span>
       </button>
     </div>
-
     <div class="row electro">
           <div class="text"><h3> Notre Selection Electromenager </h3>
           </div>
-      {% for c in i %}
-              <div class="col-md-3 p-4 card"> 
-                  <div class="card-body">
-                    <img src="{{c.url}}"/>
-                  </div>
-                  <div class="card-header">
-                    <a class="fs-5" href="/product/{{ c.id }}"> Détails </a> 
-                  </div>  
-              </div>
-      {% endfor %}
-    </div>
-
+    {% for c in i %}
+      <div class="col-md-3 p-4 card"> 
+        <div class="card-body">
+          <img src="{{c.url}}"/>
+        </div>
+        <div class="card-header">
+          <a class="fs-5" href="/product/{{c.id}}"> Détails </a> 
+        </div>  
+      </div>
+    {% endfor %}
+      </div>
     <div class="row electro">
-        <div class="text"><h3> Notre Selection Cuisine </h3></div>
+      <div class="text"><h3> Notre Selection Cuisine </h3></div>
       {% for cu in cuisine %}
-            <div class="col-md-3  card"> 
-                <div class="card-body">
-                  <img src="{{cu.url}}"/>
-                </div>
-                <div class="card-header">
-                <a class="fs-5" href="/prodcuisine/{{ cu.id }}"> Détails </a> </div> 
-            </div>
+        <div class="col-md-3  card"> 
+          <div class="card-body">
+            <img src="{{cu.url}}"/>
+          </div>
+          <div class="card-header">
+            <a class="fs-5" href="/prodcuisine/{{cu.id}}"> Détails </a> 
+          </div> 
+      </div>
       {% endfor %}
     </div>
     <div class="row electro">
-        <div class="text"><h3> Notre Selection PC Portables </h3></div>
+      <div class="text"><h3> Notre Selection PC Portables </h3></div>
       {% for pc in pcs %}
-            <div class="col-md-3 card"> 
-                <div class="card-body">
-                  <img src="{{pc.url}}"/>
-                </div>
-                <div class="card-header">
-                <a class="fs-5" href="/prod_pc/{{ pc.id }}"> Détails </a> </div>
-            </div>
+        <div class="col-md-3 card"> 
+          <div class="card-body">
+            <img src="{{pc.url}}"/>
+          </div>
+          <div class="card-header">
+            <a class="fs-5" href="/prod_pc/{{ pc.id }}"> Détails </a> </div>
+          </div>
       {% endfor %}
     </div>
-    {% include 'footer.twig' %} 
+  {% include 'footer.twig' %} 
 </body>
 </html>

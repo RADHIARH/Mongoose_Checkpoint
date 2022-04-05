@@ -4,27 +4,53 @@
     <link rel='stylesheet' href='/stylesheets/style.css' />
   </head>
   <body>
-  {% include 'navbar.twig' %} 
-  <div class="description">
+    {% include 'navbar.twig' %} 
+    <div class="description">
       <div class="col-md-3  offset-md-2 "> 
-      <img src="{{produit.url}}"/>
+        <img src="{{produit.url}}"/>
       </div>
       <div class="col-md-6 p-4 shadow offset-md-5">
-      <h3 class=>{{produit.nom}}</h3>
-      <h3 class="prix mt-3">{{produit.prix}} TND</h3>
-      <ul class="productdesc">
-      {% if produit.Capacite %}<li> Capacité: <span>{{produit.Capacite}}W</span></li>{% endif %}
-       {% if produit.Diametre %}  <li>Diametre: <span>{{produit.Diametre}} bar</span></li>{% endif %}
-      {% if produit.Materiau %} <li>Matériau: <span>{{produit.Materiau}} L</span></li>{% endif %}
-      {% if produit.Revetement %} <li>Revetement: <span>{{produit.Revetement}} L</span></li>{% endif %}
-      {% if produit.Volume_inferieur %} <li>Volume inferieur: <span>{{produit.Volume_inferieur}} L</span></li>{% endif %}
-      {% if produit.Volume_theiere %} <li>Volume de la theiere: <span>{{produit.Volume_theiere}} L</span></li>{% endif %}
-      <li> Points forts :<span>{{produit.Points_forts}}</span></li>
-     
-      </ul>
+        <h3 class=>{{produit.nom}}</h3>
+        <h3 class="prix mt-3">{{produit.prix}} TND</h3>
+        <form method="POST" action="/update/{{produit.id}}">
+          <div class="d-flex m-2"> 
+            <label class="form-label m-1 fs-5"  style="width:370px" for="">Matériau</label>
+              <input type="text" name="materiau"  disabled  id="mt" class="form-control fs-5 fw-bolder"  style="border:none;background-color:white"  value={{produit.materiau}}><br>
+          </div>
+          <div class="d-flex m-2 "> 
+            <label class="form-label m-1 fs-5"  style="width:370px" for="">Garantie</label>
+              <input type="text" name="garantie"  disabled  id="gr" class="form-control fs-5 fw-bolder" value={{produit.garantie}} id="" style="border: none;background-color:white;
+                   "><br>
+          </div>
+          <div class="d-flex m-2"> 
+            <label  class="form-label m-1 fs-5 "  style="width:370px" for="">Points forts</label>
+            <textarea id="pf" name="pointsf"  disabled class="form-control fs-f fw-bolder"  style="border:none;background-color:white"
+                       rows="7" cols="40">{{produit.points_forts}}</textarea>
+            <br>
+          </div>
+          <div class="d-flex m-2"> 
+            <a class="btn btn-danger m-1" href="/delete/{{produit.id}}" >Supprimer </a>
+            <a class="btn btn-outline-dark m-1"  id="edit">Modifier </a>
+            <input type="submit" class="btn btn-success mt-1"  id="up" value="Mettre à jour" style="visibility:hidden;height:38px">
+          </div>
+        </form>
       </div>
-  </div>
+    </div>
   {% include 'footer.twig' %} 
-     
+    {% block javascripts %}
+    <script type="text/javascript">
+    const edit = document.getElementById('edit')
+    const mt = document.getElementById('mt');
+    const gr = document.getElementById('gr');
+    const pf = document.getElementById('pf');
+    const update=document.getElementById('up');
+     edit.onclick = () => {
+      mt.disabled = false
+      gr.disabled = false
+      pf.disabled = false
+      document.getElementById('up').style.visibility="visible";
+}
+    </script>
+  {% endblock %}
   </body>
 </html>

@@ -4,32 +4,93 @@
     <link rel='stylesheet' href='/stylesheets/style.css' />
   </head>
   <body>
-  {% include 'navbar.twig' %} 
-  <div class="description">
+    {% include 'navbar.twig' with {'lastname':user.Lastname,'firstname':user.Firstname} %} 
+    <div class="description">
       <div class="col-md-3  offset-md-2 "> 
-      <img src="{{pc.url}}"/>
+        <img src="{{pc.url}}"/>
       </div>
-      <div class="col-md-6 p-4 shadow offset-md-5">
-      <h3 class=>{{pc.nom}}</h3>
-      <h3 class="prix mt-3">{{pc.prix}} TND</h3>
-      <ul class="productdesc">
-     <li> Processeur: <span>{{pc.Processeur}}W</span></li>
-     <li>Frequence processeur: <span>{{pc.Frequence_processeur}} bar</span></li>
-      <li>Disque dur: <span>{{pc.Disque_dur}} </span></li>
-       <li>RAM: <span>{{pc.RAM}} </span></li>
-       <li>Systeme d'exploitation: <span>{{pc.Systeme_exploitation}} </span></li>
-      <li>Carte_graphique: <span>{{pc.Carte_graphique}} </span></li>
-      <li>Taille de l'ecran: <span>{{pc.Taille_ecran}} </span></li>
-     <li>Carte_graphique: <span>{{pc.Carte_graphique}} </span></li>
-    <li>Connecteurs: <span>{{pc.Connecteurs}} </span></li>
-   <li> <span>{{pc.perepheriques}} </span>
-  <li>Garantie:  <span>{{pc.Garantie}} </span></li>
-  {% if pc.Points_forts %} <li> Points forts :<span>{{produit.Points_forts}}</span></li>{% endif %}
-     
-      </ul>
+      <div class="col-md-7 p-4 shadow offset-md-5">
+        <h3 class=>{{pc.nom}}</h3>
+        <h3 class="prix mt-3">{{pc.prix}} TND</h3>
+        <form method="POST" action="/update_pc/{{pc.id}}">
+          <div class="d-flex m-2"> 
+            <label class="form-label m-1 fs-5" style="width:350px">Processeur en Watt</label>
+            <input type="text" name="processeur"  disabled  id="pr" class="form-control fs-5 fw-bolder"  style="border:none;background-color:white"  value={{pc.processeur}}><br>
+          </div>
+          <div class="d-flex m-2 "> 
+            <label class="form-label m-1 fs-5" style="width:350px">Disque dur (en Go)</label>
+            <input type="text" name="disque"  disabled  id="ds" class="form-control fs-5 fw-bolder" value={{pc.disque_dur}} style="border: none;background-color:white;
+            "><br>
+          </div>
+          <div class="d-flex m-2 "> 
+            <label class="form-label m-1 fs-5" style="width:350px">RAM(en Go)</label>
+            <input type="text" name="ram"  disabled  id="rm" class="form-control fs-5 fw-bolder" value={{pc.ram}}  style="border: none;background-color:white;
+            "><br>
+          </div>
+          <div class="d-flex m-2 "> 
+            <label class="form-label m-1 fs-5"  style="width:350px">Systeme d'exploitation</label>
+            <input type="text" name="systeme"  disabled  id="se" class="form-control fs-5 fw-bolder" value={{pc.systeme_exploitation}}  style="border: none;background-color:white;
+            "><br>
+          </div>
+          <div class="d-flex m-2 "> 
+            <label class="form-label m-1 fs-5" style="width:350px">Carte_graphique</label>
+            <input type="text" name="carte"  disabled  id="cg" class="form-control fs-5 fw-bolder" value={{pc.carte_graphique}}  style="border: none;background-color:white;
+            "><br>
+          </div>
+          <div class="d-flex m-2 "> 
+            <label class="form-label m-1 fs-5" style="width:350px">Taille de l'ecran</label>
+            <textarea  name="taille"  disabled  id="te" class="form-control fs-5 fw-bolder"  style="border: none;background-color:white;
+            " rows="1" cols="50">{{pc.taille_ecran}}</textarea>
+          </div>
+          <div class="d-flex m-2 "> 
+            <label class="form-label m-1 fs-5" style="width:350px">Connecteurs</label>
+            <textarea  rows="3" cols="50" name="connecteurs"  disabled  id="conn" class="form-control fs-5 fw-bolder" style="border: none;background-color:white;
+            ">{{pc.connecteurs}} </textarea>
+          </div>
+          <div class="d-flex m-2 "> 
+            <textarea type="text" name="perepherique"  disabled  id="prf" class="form-control fs-5 fw-bolder"   style="border: none;background-color:white;
+            " rows="1" cols="20">{{pc.perepheriques}}</textarea>
+          </div>
+          <div class="d-flex m-2 "> 
+            <label class="form-label m-1 fs-5" style="width:350px" >Garantie(en années)</label>
+            <input type="text" name="garantie"  disabled  id="gr" class="form-control fs-5 fw-bolder" value={{pc.garantie}}  style="border: none;background-color:white;
+            "/><br>
+          </div>
+          <div class="d-flex m-2"> 
+            <a class="btn btn-danger m-1" href="/deletepc/{{pc.id}}" >Supprimer </a>
+            <a class="btn btn-outline-dark m-1"  id="edit" >Modifier </a>
+            <input type="submit" class="btn btn-success mt-1"  id="up" value="Mettre à jour" style="visibility:hidden;height:38px">
+          </div>
+        </form>
       </div>
-  </div>
+    </div>
   {% include 'footer.twig' %} 
-     
+    {% block javascripts %}
+      <script type="text/javascript">
+        const edit = document.getElementById('edit');
+        const pr = document.getElementById('pr');
+        const prf=document.getElementById("prf");
+        const ds = document.getElementById('ds');
+        const rm = document.getElementById('rm');
+        const se = document.getElementById('se');
+        const cg = document.getElementById('cg');
+        const te = document.getElementById('te');
+        const conn = document.getElementById('conn');
+        const gr = document.getElementById('gr');
+          edit.onclick = () => {
+          gr.disabled = false
+          cg.disabled = false
+          rm.disabled = false
+          ds.disabled = false
+          pr.disabled = false
+          prf.disabled = false
+          conn.disabled = false
+          te.disabled = false
+          conn.disabled = false
+          se.disabled = false
+          document.getElementById('up').style.visibility="visible";
+            }
+          </script>
+      {% endblock %}
   </body>
 </html>
