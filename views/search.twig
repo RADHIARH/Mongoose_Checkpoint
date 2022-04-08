@@ -58,6 +58,11 @@
           </div>
         </div> 
       {% endfor %}
+    {% endif %} 
+    {%if p is empty and el is empty and produit is empty %}
+    <div>
+    <h4> Oups....Aucun resultat trouvé </h4>
+    </div>
     {% endif %}
   </div>
     {% include 'footer.twig' %}   

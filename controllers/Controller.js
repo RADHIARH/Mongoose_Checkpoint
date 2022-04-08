@@ -152,7 +152,7 @@ const searchdata = async (req, res) => {
   });
   const prpc = await pc.find({ nom: new RegExp(ex, "i") });
   console.log(ex);
-  console.log(cuisine);
+  console.log(prpc);
   res.render("search", { produit: cuisine, el: electro, p: prpc });
 };
 module.exports.getproduct = getproductbyid;
