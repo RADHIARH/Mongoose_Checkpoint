@@ -1,4 +1,5 @@
 const mongoose = require("mongoose");
+// import models
 const users = require("./model/users");
 const electro_product = require("./model/electromenager");
 const cuisine_products = require("./model/cuisine");
@@ -47,7 +48,7 @@ const data = [
     password: "sami1587423",
   },
 ];
-// insert users listto mongodb database
+// insert users list to mongodb database
 users
   .insertMany(data)
   .then(function () {
