@@ -26,7 +26,7 @@ const getcontactlists = async (req, res) => {
   res.render("contact", { list: list });
   console.log(list);
 };
-
+// if user enter correct email and password he will be redirect to home page else an error message will be sent 
 const login = async (req, res) => {
   const electro = await electro_product.find();
   const pcs = await pc.find();
@@ -59,6 +59,7 @@ const gethomepage = async (req, res) => {
     pcs: pcs,
   });
 };
+// return list of all users 
 const getuser = async (req, res) => {
   const user = await users.findOne({
     Lastname: req.query.email,
@@ -66,6 +67,7 @@ const getuser = async (req, res) => {
   });
   res.render("navbar", { user: user });
 };
+// get  product(category:electromenager) by id 
 const getproductbyid = async (req, res) => {
   const { idd } = req.params;
   const product = await electro_product.findById(idd);
@@ -75,37 +77,41 @@ const getproductbyid = async (req, res) => {
   });
   res.render("description", { prod: product, user: user });
 };
+// get product (category:cuisine) by id 
 const getprodcuisine = async (req, res) => {
   const { id } = req.params;
   const product = await cuisine_products.findById(id);
   console.log(product);
   res.render("description_cuisine", { produit: product });
 };
+// get product(category:pc) by id 
 const getprodpc = async (req, res) => {
   const { idpc } = req.params;
   const product = await pc.findById(idpc);
   res.render("description_pc", { pc: product });
 };
+// delete product (category:cuisine) by id
 const deletecuisineproduct = async (req, res) => {
   const { id } = req.params;
   await cuisine_products.findByIdAndDelete(id);
   console.log(id);
   res.redirect("/products/home");
 };
-// delete products
+// delete product  (category:pc) by id
 const deletepc = async (req, res) => {
   const { id } = req.params;
   await pc.findByIdAndDelete(id);
   console.log(id);
   res.redirect("/products/home");
 };
+// delete product  (category:electromenager) by id 
 const deleteelectro = async (req, res) => {
   const { id } = req.params;
   await electro_product.findByIdAndDelete(id);
   console.log(id);
   res.redirect("/products/home");
 };
-// update products
+// update product(category:cuisine)  by id 
 const updatecuisine = async (req, res) => {
   const { idd } = req.params;
   await cuisine_products.findByIdAndUpdate(idd, {
@@ -116,6 +122,7 @@ const updatecuisine = async (req, res) => {
   console.log(idd);
   res.redirect("/products/home");
 };
+// update product  (category:electromenager) by id 
 const updateelectro = async (req, res) => {
   const { id } = req.params;
   await electro_product.findByIdAndUpdate(id, {
@@ -127,6 +134,7 @@ const updateelectro = async (req, res) => {
   });
   res.redirect("/products/home");
 };
+// update product  (category:pc) by id 
 const updatepc = async (req, res) => {
   const { id } = req.params;
   await pc.findByIdAndUpdate(id, {
@@ -144,6 +152,7 @@ const updatepc = async (req, res) => {
   console.log("done");
   res.redirect("/products/home");
 };
+// search product by name (return products that includes the string entred by the user )
 const searchdata = async (req, res) => {
   var ex = req.query.data;
   const cuisine = await cuisine_products.find({ nom: new RegExp(ex, "i") });

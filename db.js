@@ -3,7 +3,7 @@ const users = require("./model/users");
 const electro_product = require("./model/electromenager");
 const cuisine_products = require("./model/cuisine");
 const pc = require("./model/pc.js");
-// connect to mongodb
+// connect to mongodb cluster
 const url = `mongodb+srv://radhia_rh:RADHIARAHMANI2022@cluster0.b8mc7.mongodb.net/myFirstDatabase?retryWrites=true&w=majority`;
 const connectionParams = {
   useNewUrlParser: true,
@@ -12,13 +12,13 @@ const connectionParams = {
 mongoose
   .connect(url, connectionParams)
   .then(() => {
-    console.log("Connected to database ");
+    console.log("Connected to database "); //Success
   })
   .catch((err) => {
-    console.error(`Error connecting to the database. \n${err}`);
+    console.error(`Error connecting to the database. \n${err}`); //Failure
   });
 
-// utilisateurs
+// users list
 const data = [
   {
     Lastname: "Ben Lahmer",
@@ -47,6 +47,7 @@ const data = [
     password: "sami1587423",
   },
 ];
+// insert users listto mongodb database
 users
   .insertMany(data)
   .then(function () {
@@ -55,7 +56,7 @@ users
   .catch(function (error) {
     console.log(error); // Failure
   });
-// produits electromenager
+// list of products (category:electromenager)
 const data1 = [
   {
     nom: "Machine à Café Nespresso Magimix Inissia - Noir",
@@ -124,6 +125,7 @@ const data1 = [
     garantie: 1,
   },
 ];
+// insert data (category:electromenager) to mongodb database
 electro_product
   .insertMany(data1)
   .then(function () {
@@ -132,7 +134,7 @@ electro_product
   .catch(function (error) {
     console.log(error); // Failure
   });
-// produits cuisine
+// list of products (category:cuisine)
 const data2 = [
   {
     url: "https://tdiscount.tn/modules/tdistvson/scripts/webp-img/CUI5.png.webp",
@@ -189,7 +191,7 @@ const data2 = [
     garantie: 1,
   },
 ];
-
+// insert data(category :cuisine) to mongodb database
 cuisine_products
   .insertMany(data2)
   .then(function () {
@@ -198,7 +200,7 @@ cuisine_products
   .catch(function (error) {
     console.log(error); // Failure
   });
-//  produits pcs
+//  list of products (category: pc)
 const data3 = [
   {
     nom: "Ordinateur Portable Lenovo IdeaPad 3 15IGL05 N4020 4Go 1To - Bleu",
@@ -225,7 +227,8 @@ const data3 = [
     disque_dur: "1 To",
     systeme_exploitation: "Windows 10",
     carte_graphique: "Intel HD Graphics",
-    connecteurs:"1 port USB 3.2 | 1 port USB 3.2 Type C | 2 port USB 2.0 | 1 port HDMI | 1 prise audio COMBO | Lecteur carte mémoire",
+    connecteurs:
+      "1 port USB 3.2 | 1 port USB 3.2 Type C | 2 port USB 2.0 | 1 port HDMI | 1 prise audio COMBO | Lecteur carte mémoire",
     taille_ecran: "15.6| Résolution:HD",
     perepheriques: "Wifi |  Bluetooth",
     garantie: 1,
@@ -291,6 +294,7 @@ const data3 = [
     garantie: 1,
   },
 ];
+// insert data (category:pc) to mongodb database
 pc.insertMany(data3)
   .then(function () {
     console.log("Data inserted"); // Success

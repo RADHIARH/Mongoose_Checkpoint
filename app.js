@@ -1,9 +1,12 @@
 var createError = require("http-errors");
 var express = require("express");
 var path = require("path");
+//load the cookie-parser middleware
 var cookieParser = require("cookie-parser");
 var logger = require("morgan");
+//load the badyParser middleware
 const bodyParser = require("body-parser");
+// importing routes files
 const Login = require("./routes/login");
 const home = require("./routes/home");
 var indexRouter = require("./routes/index");
@@ -23,16 +26,20 @@ const deleteelectro = require("./routes/delete_electro");
 const updatecuisine = require("./routes/update_cuisine");
 const updateelectro = require("./routes/update_electro");
 const updatepc = require("./routes/update_pc");
+// create a new express application
 var app = express();
+//specifying a directory where the template files are located
 app.set("views", path.join(__dirname, "views"));
+// specifying the template engine that  will be used
 app.set("view engine", "twig");
-
 app.use(logger("dev"));
 app.use(express.json());
+// parsing incoming requests
 app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, "public")));
-// middleware
+// middlewares
+// middleware used to verify if the application is only availaible during working hours (Monday to Friday,  from 9 to 17)
 const middleware = (req, res, next) => {
   const date = new Date();
   const hour = date.getHours();
@@ -42,6 +49,7 @@ const middleware = (req, res, next) => {
     next(error);
   } else next();
 };
+// error handler middleware
 const errorhandler = (err, req, res, next) => {
   if (err) {
     res.send(
@@ -49,9 +57,10 @@ const errorhandler = (err, req, res, next) => {
     );
   }
 };
+// mounting middlewares on the app
 app.use(middleware);
 app.use(errorhandler);
-// routes
+// mounting routes on the app
 app.use("/", Login);
 app.use("/login", Login);
 app.use("/users", usersRouter);
@@ -87,6 +96,5 @@ app.use(function (err, req, res, next) {
   res.status(err.status || 500);
   res.render("error");
 });
-//middlewares
 
 module.exports = app;
